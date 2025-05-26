@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lyqx_test_project/core/routes/app_router.dart';
+import 'package:lyqx_test_project/core/utils/snackbar_util.dart';
 import 'package:lyqx_test_project/features/auth/presentation/bloc/auth_bloc.dart';
 
 import '../../../cart/presentation/bloc/cart_bloc.dart';
 import '../bloc/wishlist_bloc.dart';
 import '../widgets/wishlist_item_card.dart';
 
-class WishlistPage extends StatefulWidget {
+class WishlistPage extends StatefulWidget with SnackbarUtil {
   const WishlistPage({super.key});
 
   @override
@@ -27,6 +28,25 @@ class _WishlistPageState extends State<WishlistPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Wishlist',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        centerTitle: false,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete_outline),
+            onPressed: () => _showClearWishlistDialog(context),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: CustomScrollView(
           controller: _scrollController,
@@ -56,26 +76,18 @@ class _WishlistPageState extends State<WishlistPage> {
                           context.read<CartBloc>().add(
                             AddToCartEvent(item.product),
                           );
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                '${item.product.title} added to cart',
-                              ),
-                              duration: const Duration(seconds: 2),
-                            ),
+                          widget.showSuccessSnackbar(
+                            context,
+                            '${item.product.title} added to cart',
                           );
                         },
                         onRemove: () {
                           context.read<WishlistBloc>().add(
                             RemoveFromWishlistEvent(item.product.id),
                           );
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                '${item.product.title} removed from wishlist',
-                              ),
-                              duration: const Duration(seconds: 2),
-                            ),
+                          widget.showInfoSnackbar(
+                            context,
+                            '${item.product.title} removed from wishlist',
                           );
                         },
                       );
@@ -183,12 +195,7 @@ class _WishlistPageState extends State<WishlistPage> {
                 onPressed: () {
                   context.read<WishlistBloc>().add(ClearWishlistEvent());
                   Navigator.of(context).pop();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Wishlist cleared'),
-                      duration: Duration(seconds: 2),
-                    ),
-                  );
+                  widget.showInfoSnackbar(context, 'Wishlist cleared');
                 },
                 style: TextButton.styleFrom(foregroundColor: Colors.red),
                 child: const Text('Clear'),

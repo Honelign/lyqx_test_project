@@ -7,6 +7,7 @@ import 'package:lyqx_test_project/core/widgets/default_sized_box.dart';
 import 'package:lyqx_test_project/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:lyqx_test_project/features/cart/domain/entities/cart_item.dart';
 import 'package:lyqx_test_project/features/cart/presentation/bloc/cart_bloc.dart';
+import 'package:lyqx_test_project/core/utils/snackbar_util.dart';
 
 const _accentColor = Color(0xFF1E232C); // Main dark color
 const _textColor = Color(0xFF1E232C); // Primary text color
@@ -17,7 +18,7 @@ const _secondaryTextColor = Color.fromARGB(
   0,
 ); // Secondary text color
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatelessWidget with SnackbarUtil {
   const CartPage({super.key});
 
   @override
@@ -282,21 +283,11 @@ class CartPage extends StatelessWidget {
 
   void _removeItem(BuildContext context, CartItem item) {
     context.read<CartBloc>().add(RemoveFromCartEvent(item.product.id));
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('${item.product.title} removed'),
-        duration: const Duration(seconds: 2),
-      ),
-    );
+    showInfoSnackbar(context, '${item.product.title} removed');
   }
 
   void _checkout(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Proceeding to checkout...'),
-        duration: Duration(seconds: 2),
-      ),
-    );
+    showSuccessSnackbar(context, 'Proceeding to checkout...');
   }
 }
 

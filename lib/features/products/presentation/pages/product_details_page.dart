@@ -5,15 +5,16 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lyqx_test_project/core/routes/app_router.dart';
 import 'package:lyqx_test_project/core/widgets/default_sized_box.dart';
+import 'package:lyqx_test_project/features/cart/presentation/bloc/cart_bloc.dart';
+import 'package:lyqx_test_project/features/wishlist/presentation/bloc/wishlist_bloc.dart';
 import 'package:lyqx_test_project/main.dart';
 
+import '../../../../core/utils/snackbar_util.dart';
 import '../../../../core/widgets/error_view.dart';
 import '../../../../core/widgets/loading_indicator.dart';
-import '../../../cart/presentation/bloc/cart_bloc.dart';
-import '../../../wishlist/presentation/bloc/wishlist_bloc.dart';
 import '../bloc/product_details_bloc.dart';
 
-class ProductDetailsPage extends StatefulWidget {
+class ProductDetailsPage extends StatefulWidget with SnackbarUtil {
   final int productId;
 
   const ProductDetailsPage({super.key, required this.productId});
@@ -63,25 +64,17 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           context.read<WishlistBloc>().add(
                             RemoveFromWishlistEvent(product.id),
                           );
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                '${product.title} removed from wishlist',
-                              ),
-                              duration: const Duration(seconds: 2),
-                            ),
+                          widget.showInfoSnackbar(
+                            context,
+                            '${product.title} removed from wishlist',
                           );
                         } else {
                           context.read<WishlistBloc>().add(
                             AddToWishlistEvent(product),
                           );
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                '${product.title} added to wishlist',
-                              ),
-                              duration: const Duration(seconds: 2),
-                            ),
+                          widget.showSuccessSnackbar(
+                            context,
+                            '${product.title} added to wishlist',
                           );
                         }
                       },
