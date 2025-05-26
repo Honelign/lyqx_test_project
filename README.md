@@ -112,34 +112,27 @@ The estimated time to deliver this project would be approximately 16-20 hours, i
 - Wishlist functionality: 3-4 hours
 - Testing and bug fixing: 2-3 hours
 
-## Future Improvements
 
-- Add unit and widget tests
-- Implement product search functionality
-- Add product filtering by category
-- Implement user profile management
-- Add dark mode support
-- Improve error handling and offline support
 
 ## Screenshots
 
-### Welcome Screen
-![Welcome Screen](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.00.30.png)
+### Products Screen
+![Product Screen](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.00.30.png)
+
+### Wishlist Screen
+![Wsihlist Screen](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.00.39.png)
+
+### Cart List empty
+!['Cart List](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.00.43.png)
+
+### Cart List
+![Cart List](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.00.52.png)
+
+### Product detail
+![Product detail](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.00.59.png)
 
 ### Login Screen
-![Login Screen](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.00.39.png)
+![Login Screen](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.02.42.png)
 
-### Products List
-![Products List](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.00.43.png)
-
-### Product Details
-![Product Details](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.00.52.png)
-
-### Cart
-![Cart](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.00.59.png)
-
-### Wishlist
-![Wishlist](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.02.42.png)
-
-### Empty Cart
-![Empty Cart](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.02.57.png)
+### Welcome Screen
+![Welcome Screen](screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202025-05-26%20at%2002.02.57.png)
