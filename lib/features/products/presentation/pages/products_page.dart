@@ -7,13 +7,15 @@ import 'package:lyqx_test_project/features/products/domain/entities/product.dart
 import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../../core/routes/app_router.dart';
+import '../../../../core/utils/snackbar_util.dart';
 import '../../../../core/widgets/error_view.dart';
 import '../../../../core/widgets/loading_indicator.dart';
 import '../../../cart/presentation/bloc/cart_bloc.dart';
 import '../../../wishlist/presentation/bloc/wishlist_bloc.dart';
 import '../bloc/products_bloc.dart';
+import '../bloc/product_details_bloc.dart';
 
-class ProductsPage extends StatefulWidget {
+class ProductsPage extends StatefulWidget with SnackbarUtil {
   const ProductsPage({super.key});
 
   @override
@@ -183,22 +185,12 @@ class _ProductsPageState extends State<ProductsPage> {
 
   void _handleAddToCart(BuildContext context, Product product) {
     context.read<CartBloc>().add(AddToCartEvent(product));
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('${product.title} added to cart'),
-        duration: const Duration(seconds: 2),
-      ),
-    );
+    widget.showSuccessSnackbar(context, '${product.title} added to cart');
   }
 
   void _handleAddToWishlist(BuildContext context, Product product) {
     context.read<WishlistBloc>().add(AddToWishlistEvent(product));
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('${product.title} added to wishlist'),
-        duration: const Duration(seconds: 2),
-      ),
-    );
+    widget.showSuccessSnackbar(context, '${product.title} added to wishlist');
   }
 }
 

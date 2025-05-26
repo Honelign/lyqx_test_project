@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/routes/app_router.dart';
+import '../../../../core/utils/snackbar_util.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/login_form.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatelessWidget with SnackbarUtil {
   const LoginPage({super.key});
 
   @override
@@ -27,9 +28,7 @@ class LoginPage extends StatelessWidget {
             if (state is AuthAuthenticated) {
               context.goNamed(AppRouter.main);
             } else if (state is AuthError) {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(state.message)));
+              showErrorSnackbar(context, state.message);
             }
           },
           builder: (context, state) {
