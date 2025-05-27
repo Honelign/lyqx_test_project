@@ -105,12 +105,12 @@ Use the following credentials to log in:
 
 The estimated time to deliver this project would be approximately 16-20 hours, including:
 
-- Project setup and architecture: 1 hours
+- Project setup and architecture: 1 hour
 - Authentication implementation: 2 hours
 - Products listing and details: 2-3 hours
 - Cart functionality: 2 hours
 - Wishlist functionality: 2 hours
-- Testing and bug fixing: 1 hours
+- Testing and bug fixing: 1 hour
 
 
 
